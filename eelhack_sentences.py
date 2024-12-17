@@ -47,6 +47,8 @@ class Eelhack(TRFExperiment):
     # This is how subject names are identified ("sub" followed by two digits). See the documentation of the builtin Python regular expression (re) module for details on how to build patterns
     subject_re = r'sub-\d\d'
 
+    trigger_shift = 0.066 # Delay between trigger and start of the audio stimulus  
+
     # This is used to identify the *-raw.fif file in the eeg directory 
     sessions = ['story']
 

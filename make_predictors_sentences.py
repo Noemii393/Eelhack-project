@@ -18,9 +18,8 @@ with wave.open(str(path / 'stimulus.wav'), 'rb') as infile:
     # segment audio for each epoch
     for i in range(len(epochs['T'])):
         start = epochs['T'][i] # starts at time "T" of the epoch
-        infile.setpos(int( (start - 39.67) * framerate)) # define the starting position to read the audio
-        # we subtract the 39.67 s of difference between eeg and audio, and transform in sample 
-        # question: would the delay be different across participants?
+        infile.setpos(int( (start - epochs['T'][0]) * framerate)) # define the starting position to read the audio
+        # we subtract the first trigger's timestamp (i.e. the delay between the start of the eeg recording and the start of the audio), and transform in sample 
         
         if i + 1 == len(epochs['T']): # if you reach the last epoch, get the audio until the end
             end = infile.getnframes()/framerate
